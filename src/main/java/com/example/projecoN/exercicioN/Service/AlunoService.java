@@ -28,5 +28,15 @@ public class AlunoService {
     public Aluno salvarAluno(Aluno oAluno) {
         return alunoRepository.save(oAluno);
     }
-    
+    public Aluno alterarAluno(Long id, Aluno altAluno){
+        Aluno alunoExistente = buscarAlunoPorId(id);
+        alunoExistente.setNome_aluno(altAluno.getNome_aluno());
+        alunoExistente.setCpf_aluno(altAluno.getCpf_aluno());
+        alunoExistente.setEmail_aluno(altAluno.getEmail_aluno());
+        return alunoRepository.save(alunoExistente);
+    }
+    public void deletarAluno(Long id){
+        Aluno alunoExistente = buscarAlunoPorId(id);
+        alunoRepository.delete(alunoExistente);
+    }
 }
