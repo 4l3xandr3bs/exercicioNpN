@@ -1,0 +1,32 @@
+package com.example.projecoN.exercicioN.Service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.projecoN.exercicioN.Entity.Aluno;
+import com.example.projecoN.exercicioN.Repository.AlunoRepository;
+
+@Service
+public class AlunoService {
+    private final AlunoRepository alunoRepository;
+
+    public AlunoService(AlunoRepository alunoRepository) {
+        this.alunoRepository = alunoRepository; // note* utilize this method instead of @Autowired from now on, since
+                                                // apparently its outdated(source: my professor)
+    }
+
+    public List<Aluno> listarTodosAlunos() {
+        return alunoRepository.findAll();
+    }
+
+    public Aluno buscarAlunoPorId(Long id) {
+        return alunoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("aluno não encontrado com o ID: " + id));
+    }
+
+    public Aluno salvarAluno(Aluno oAluno) {
+        return alunoRepository.save(oAluno);
+    }
+    
+}
