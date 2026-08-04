@@ -8,7 +8,7 @@
     
     <h2>Formulário de Aluno</h2>
 
-    <form th:action="@{/alunos/salvar}" th:object="${aluno}" method="POST">
+    <form th:action="@{/aluno/salvar}" th:object="${aluno}" method="POST">
         
         <input type="hidden" th:field="*{id_aluno}" />
 
@@ -34,7 +34,7 @@
     </form>
 
     <br>
-    <a th:href="@{/alunos/listar}">Voltar para a Listagem</a>
+    <a th:href="@{/aluno/listarTodos}">Voltar para a Listagem</a>
 
 </body>
 </html>
