@@ -21,7 +21,7 @@ public class Cursocontroller {
     oModel.addAttribute("listCursos", cursoService.listarTodosCursos());
       return new String();
   }
-  @GetMapping("/cadastroCurso")
+  @GetMapping("/cadastrarCurso")
   public String cadastrarCurso(Model oModel) {
     oModel.addAttribute("curso", new Curso());
       return "cadastrarCurso";
@@ -31,11 +31,6 @@ public class Cursocontroller {
     cursoService.salvarCurso(oCurso);
       return "redirect:/curso/listarCurso";
   }
-  @PostMapping("/excluir")
-  public String excluirCurso(@PathVariable long id) {
-      cursoService.deletarCurso(id);
-      
-      return "redirect:/curso/listarCurso";
-  }
+  
   
 }

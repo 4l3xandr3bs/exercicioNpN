@@ -9,11 +9,10 @@ import com.example.projecoN.exercicioN.Repository.CursoRepository;
 
 @Service
 public class CursoService {
-    private final CursoService cursoRepository;
+    private final CursoRepository cursoRepository; 
 
-    public CursoService(CursoService cursoRepository) {
+    public CursoService(CursoRepository cursoRepository) {  
         this.cursoRepository = cursoRepository;
-
     }
 
     public List<Curso> listarTodosCursos() {
@@ -28,6 +27,7 @@ public class CursoService {
     public Curso salvarCurso(Curso oCurso) {
         return cursoRepository.save(oCurso);
     }
+    
     public Curso alterarCurso(Long id, Curso altCurso){
         Curso cursoExistente = buscarCursoPorId(id);
         cursoExistente.setNome_curso(altCurso.getNome_curso());
@@ -35,5 +35,4 @@ public class CursoService {
         cursoExistente.setDescricaoCurso(altCurso.getDescricaoCurso());
         return cursoRepository.save(cursoExistente);
     }
-
 }

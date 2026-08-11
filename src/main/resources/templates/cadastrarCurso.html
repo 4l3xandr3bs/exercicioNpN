@@ -10,7 +10,7 @@
 
     <form th:action="@{/Curso/salvarC}" th:object="${curso}" method="POST">
         
-        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{id_curso}" />
 
         <div>
             <label for="nome_curso">Nome do Curso:</label>
