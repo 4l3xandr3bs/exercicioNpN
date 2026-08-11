@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.projecoN.exercicioN.Entity.Aluno;
 import com.example.projecoN.exercicioN.Service.AlunoService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -32,6 +31,12 @@ public class Alunocontroller {
     @PostMapping("/salvar")
     public String salvarAluno(Aluno oAluno) {
         alunoService.salvarAluno(oAluno);
+        return "redirect:/aluno/listarTodos";
+    }
+    @GetMapping("/excluir/{id}")
+    public String excluirAluno(@PathVariable Long id) {
+
+      alunoService.deletarAluno(id);
         return "redirect:/aluno/listarTodos";
     }
     

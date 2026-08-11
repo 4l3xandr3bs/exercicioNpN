@@ -12,8 +12,8 @@ public class AlunoService {
     private final AlunoRepository alunoRepository;
 
     public AlunoService(AlunoRepository alunoRepository) {
-        this.alunoRepository = alunoRepository; // note* utilize this method instead of @Autowired from now on, since
-                                                // apparently its outdated(source: my professor)
+        this.alunoRepository = alunoRepository; // note* utilize this method instead of @Autowired from now on
+                                                // 
     }
 
     public List<Aluno> listarTodosAlunos() {
