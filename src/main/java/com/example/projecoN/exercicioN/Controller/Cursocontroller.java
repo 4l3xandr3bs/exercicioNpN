@@ -19,7 +19,7 @@ public class Cursocontroller {
   @GetMapping("/listarCurso")
   public String listarTodosCursos(Model oModel) {
     oModel.addAttribute("listCursos", cursoService.listarTodosCursos());
-      return new String();
+      return "listarCurso";
   }
   @GetMapping("/cadastrarCurso")
   public String cadastrarCurso(Model oModel) {
@@ -29,7 +29,7 @@ public class Cursocontroller {
   @PostMapping("/salvarC")
   public String salvarCurso(Curso oCurso) {
     cursoService.salvarCurso(oCurso);
-      return "redirect:/curso/listarCurso";
+      return "redirect:/Curso/listarCurso";
   }
   
   

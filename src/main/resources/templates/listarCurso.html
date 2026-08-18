@@ -24,11 +24,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="cursoItem : ${listCursos}">
-                <td th:text="${cursoItem.id_curso}"></td>
-                <td th:text="${cursoItem.nome_Curso}"></td>
-                <td th:text="${cursoItem.cargaHoraria}"></td>
-                <td th:text="${cursoItem.descricaoCurso}"></td>
+            <tr th:each="cursoItem : ${listarCursos}">
+                <td th:text="${Curso.id_curso}"></td>
+                <td th:text="${Curso.nome_Curso}"></td>
+                <td th:text="${Curso.cargaHoraria}"></td>
+                <td th:text="${Curso.descricaoCurso}"></td>
 
                 <td>
                     <a th:href="@{/Curso/editar/{id_curso}(id=${cursoItem.id_curso})}">Editar</a> |
@@ -38,6 +38,6 @@
         </tbody>
     </table>
 
-    <a th:href="@{/curso/novoCurso}">+ Cadastrar Novo Curso</a>
+    <a th:href="@{/Curso/cadastrarCurso}">+ Cadastrar Novo Curso</a>
 </body>
 </html>
