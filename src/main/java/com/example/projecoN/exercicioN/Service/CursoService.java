@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.projecoN.exercicioN.Entity.Aluno;
 import com.example.projecoN.exercicioN.Entity.Curso;
 import com.example.projecoN.exercicioN.Repository.CursoRepository;
 
@@ -34,5 +35,10 @@ public class CursoService {
         cursoExistente.setCargaHoraria(altCurso.getCargaHoraria());
         cursoExistente.setDescricaoCurso(altCurso.getDescricaoCurso());
         return cursoRepository.save(cursoExistente);
+    }
+
+   public void deletarCurso(Long id){
+        Curso CursoExistente = buscarCursoPorId(id);
+        cursoRepository.delete(CursoExistente);
     }
 }

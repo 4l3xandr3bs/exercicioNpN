@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.projecoN.exercicioN.Entity.Curso;
 import com.example.projecoN.exercicioN.Service.CursoService;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/Curso")
@@ -29,6 +31,11 @@ public class Cursocontroller {
   @PostMapping("/salvarC")
   public String salvarCurso(Curso oCurso) {
     cursoService.salvarCurso(oCurso);
+      return "redirect:/Curso/listarCurso";
+  }
+  @GetMapping("/excluirC/{id}")
+  public String excluirCurso(@PathVariable long id) {
+     cursoService.deletarCurso(id);
       return "redirect:/Curso/listarCurso";
   }
   
