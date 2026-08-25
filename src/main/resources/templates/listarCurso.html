@@ -31,7 +31,7 @@
                 <td th:text="${cursoItem.descricaoCurso}"></td>
 
                 <td>
-                    <a th:href="@{/Curso/editar/{id}(id=${cursoItem.id_curso})}">Editar</a> |
+                    <a th:href="@{/Curso/editarC/{id}(id=${cursoItem.id_curso})}">Editar</a> |
                     <a th:href="@{/Curso/excluirC/{id}(id=${cursoItem.id_curso})}" onclick="return confirm('Tem certeza que deseja excluir este curso?');">Excluir</a>
                 </td>
             </tr>

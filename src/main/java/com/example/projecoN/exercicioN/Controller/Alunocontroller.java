@@ -9,6 +9,8 @@ import com.example.projecoN.exercicioN.Service.AlunoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -38,6 +40,12 @@ public class Alunocontroller {
 
       alunoService.deletarAluno(id);
         return "redirect:/aluno/listarTodos";
+    }
+    @GetMapping("/editar/{id}")
+    public String formAlterarAluno(@PathVariable Long id, Model oModel) {
+  Aluno alunoExistente = alunoService.buscarAlunoPorId(id);
+  oModel.addAttribute("aluno", alunoExistente);
+      return "cadastrarAluno";
     }
     
 }
