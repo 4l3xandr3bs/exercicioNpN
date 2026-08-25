@@ -43,8 +43,8 @@ public class Alunocontroller {
     }
     @GetMapping("/editar/{id}")
     public String formAlterarAluno(@PathVariable Long id, Model oModel) {
-  Aluno alunoExistente = alunoService.buscarAlunoPorId(id);
-  oModel.addAttribute("aluno", alunoExistente);
+      Aluno alunoExistente = alunoService.buscarAlunoPorId(id);
+      oModel.addAttribute("aluno", alunoExistente);
       return "cadastrarAluno";
     }
     
