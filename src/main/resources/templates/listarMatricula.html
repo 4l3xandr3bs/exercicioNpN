@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Matrículas</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    </style>
+</head>
+<body>
+
+    <h2>Controle de Matrículas Ativas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cód. Matrícula</th>
+                <th>Aluno</th>
+                <th>Curso</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Nota</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mat : ${listarMatriculas}">
+                <td th:text="${mat.id_matricula}"></td>
+                
+                <td th:text="${mat.aluno.nome_aluno}"></td>
+                <td th:text="${mat.curso.nome_curso}"></td>
+                
+                <td th:text="${mat.data_matricula}"></td>
+                <td th:text="${mat.status}"></td>
+                
+                <!-- Validação simples: Se a nota for nula mostra um traço -->
+                <td th:text="${mat.notaFinal != null ? mat.notaFinal : '-'}"></td>
+                
+                <td>
+                    <a th:href="@{/matriculaCTR/editar/{id}(id=${mat.id_matricula})}">Editar / Lançar Nota</a> |
+                    <a th:href="@{/matriculaCTR/excluir/{id}(id=${mat.id_matricula})}" onclick="return confirm('Excluir esta matrícula?');">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/matriculaCTR/formCadastrarM}"> Nova Matrícula</a>
+    <br><br>
+    <a th:href="@{/aluno/main}">Ir para Main</a>
+
+
+</body>
+</html>

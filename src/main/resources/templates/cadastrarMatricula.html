@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Nova Matrícula</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
 
     <h2>Registrar Nova Matrícula</h2>
 
-    <form th:action="@{/matriculas/salvarMatricula}" th:object="${matriculaDTO}" method="POST">
+    <form th:action="@{/matriculaCTR/salvarMatricula}" th:object="${MariculaDTO}" method="POST">
         
         <div>
             <label for="alunoId">Selecione o Aluno:</label>
-            <select id="alunoID" th:field="*{alunoID}" required>
+            <select id="id_aluno" th:field="*{id_aluno}" required>
                 <option value=""> Escolha um Aluno </option>
                 <!-- O th:value guarda o ID (que vai pro banco), e o th:text mostra o Nome para o usuário -->
                 <option th:each="aluno : ${listAlunos}"
-                        th:value="${aluno.id}"
-                        th:text="${aluno.nome_aluno} + ' (Matricula: ' + ${aluno.matricula} + ')'">
+                        th:value="${aluno.id_aluno}"
+                        th:text="${aluno.nome_aluno}">
                 </option>
             </select>
         </div>
@@ -26,11 +27,11 @@
         
         <div>
             <label for="cursoId">Selecione o Curso:</label>
-            <select id="cursoID" th:field="*{cursoID}" required>
+            <select id="id_curso" th:field="*{id_curso}" required>
                 <option value=""> Escolha um Curso </option>
-                <option th:each="curso : ${listCursos}"
-                        th:value="${curso.id}"
-                        th:text="${curso.nome_curso}">
+                <option th:each="c : ${listCursos}"
+                        th:value="${c.id_curso}"
+                        th:text="${c.nome_curso}">
                 </option>
             </select>
         </div>
@@ -38,7 +39,7 @@
 
         <div>
             <label for="data_matricula">Data da Matrícula:</label>
-            <input type="text" id="data_matricula" th:field="*{data_matricula}" placeholder="DD/MM/AAAA" required />
+            <input type="text" id="dataMatricula" th:field="*{dataMatricula}" placeholder="DD/MM/AAAA" required />
         </div>
         <br>
 
@@ -62,7 +63,7 @@
     </form>
 
     <br>
-    <a th:href="@{/matriculas/listarMatriculas}">Voltar para a Listagem</a>
+    <a th:href="@{/matriculaCTR/listarMatriculas}">Voltar para a Listagem</a>
 
 </body>
 </html>
